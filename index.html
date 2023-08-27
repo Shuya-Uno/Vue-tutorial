@@ -13,11 +13,11 @@
 
     <div id="app">
         <p>{{ title }} - {{ author }} - {{ age }}</p>
-        <!-- Realm controlled & accesible by vue-->
+        
+        <button v-on:click="age++">Increase age</button>
+        <button v-on:click="age--">Decrease age</button>
+        <div @click="changeTitle('Oathbringer')">Change book title</div>
     </div>
-
-    {{ title }}
-    <!-- realm not accesible by vue -->
     
 </body>
 </html>
