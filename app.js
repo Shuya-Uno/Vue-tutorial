@@ -4,9 +4,9 @@ const app = Vue.createApp({
             url: 'https://www.thenetninja.co.uk',
             showBooks: true,
             books: [
-                {title: 'Name of the Wind', author: 'Patrick Rothfuss', img: 'assets/1.jpg', isfav: true},
-                {title: 'The Way of Kings', author: 'Brandon Sanderson', img: 'assets/2.jpg', isfav: false},
-                {title: 'The Final Empire', author: 'Brandon Sanderson', img: 'assets/3.jpg', isfav: true}
+                {title: 'Name of the Wind', author: 'Patrick Rothfuss', img: 'assets/1.jpg', isFav: true},
+                {title: 'The Way of Kings', author: 'Brandon Sanderson', img: 'assets/2.jpg', isFav: false},
+                {title: 'The Final Empire', author: 'Brandon Sanderson', img: 'assets/3.jpg', isFav: true}
             ]
         }
     },
@@ -16,8 +16,14 @@ const app = Vue.createApp({
             this.showBooks = !this.showBooks
         },
 
-        toggleIsfav(book){
-            book.isfav = !book.isfav
+        toggleIsFav(book){
+            book.isFav = !book.isFav
+        }
+    },
+
+    computed: {
+        filteredBooks(){
+            return this.books.filter((book) => book.isFav)
         }
     }
 
