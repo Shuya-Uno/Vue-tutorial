@@ -14,6 +14,10 @@ const app = Vue.createApp({
     methods: {
         toggleShowBooks(){
             this.showBooks = !this.showBooks
+        },
+
+        toggleIsfav(book){
+            book.isfav = !book.isfav
         }
     }
 
