@@ -9,13 +9,32 @@
     <script src="app.js" defer></script>
 
     <style>
-        .box {
-            padding: 100px 0;
-            width: 400px;
-            text-align: center;
-            background-color: #ddd;
-            margin: 20px;
-            display: inline-block;
+        body {
+            background-color: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p, h2, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li  {
+            list-style-type: none;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background-color: #ff9ed2;
+            color: #fff;
         }
     </style>
 </head>
@@ -23,12 +42,9 @@
     <h1>Hello, Vue :)</h1>
 
     <div id="app">
-        <!-- attribute binding -->
-        <!-- <a :href="url">best website ever</a> -->
-
         <div v-if="showBooks">
             <ul>
-                <li v-for="book in books">
+                <li v-for="book in books" :class="{ fav: book.isfav }">
                     <img :src="book.img" :alt="book.title">
                     <h2>{{ book.title }}</h2>
                     <p>{{ book.author }}</p>
