@@ -1,34 +1,21 @@
 <template>
   <h1>{{ title }}</h1>
-  <input type="text" ref="name">
-  <button @click="handleClick">click me</button>
+  <Modal />
 </template>
-<!--
-  Gets rendered to the "app" div
-   (not directly coding inside the div, in order to utilize the concept of multiple components).
--->
 
 <script>
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
+  components: { Modal },
+
   data(){
     return {
       title: 'My First Vue App :)'
     }
-  },
-  methods: {
-    handleClick(){
-      console.log(this.$refs.name)
-      this.$refs.name.classList.add('active')
-      this.$refs.name.focus()
-    }
   }
 }
-/*
-  All dynamic development methods that was used in widget-size project
-   can also be used in SPA-size projects (Such as the data function above).
-*/
 </script>
 
 <style>
@@ -46,8 +33,4 @@ h1 {
   display: inline-block;
   padding-bottom: 10px;
 }
-/* 
-  Every style written inside here is placed into the <head>,
-   being a global style for any components by default.
-*/
 </style>
