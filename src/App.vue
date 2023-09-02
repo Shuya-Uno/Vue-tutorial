@@ -13,7 +13,10 @@
     -->
   </div>
   <p>Welcome...</p>
-  <button @click="toggleModal">open modal</button>
+  <button @click.alt="toggleModal">open modal (alt)</button>
+  <!-- 
+    @event.something → event modifier (can configure more detailed cases of events)
+   -->
 </template>
 
 <script>
