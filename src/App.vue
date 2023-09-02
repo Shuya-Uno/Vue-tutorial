@@ -1,6 +1,19 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" :theme="theme"/>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" :theme="theme" @close="toggleModal"/>
+    <!-- 
+      The attribute area in child componet tags is
+       a inlet and outlet of data that links the parent and child component
+
+      outlet: props (receives in props object in child component)
+      inlet: custom events (sent from $emit in child)
+
+      (Seems to be very cetral structure, which data/actions handled in parent... (which is good))
+    -->
+  </div>
+  <p>Welcome...</p>
+  <button @click="toggleModal">open modal</button>
 </template>
 
 <script>
@@ -15,7 +28,14 @@ export default {
       title: 'My First Vue App :)',
       header: 'Sign up for the Giveaway!',
       text: 'Grab your ninja swags for half price!',
-      theme: 'sale'
+      theme: 'sale',
+      showModal: false
+    }
+  },
+
+  methods: {
+    toggleModal(){
+      this.showModal = !this.showModal;
     }
   }
 }
