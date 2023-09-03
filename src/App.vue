@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <div v-if="showModal">
+  <teleport to=".modals" v-if="showModal">
     <Modal :theme="theme" @close="toggleModal">
       <template v-slot:links>
         <a href="#">sign up now</a>
@@ -9,13 +9,18 @@
       <h1>Ninja Giveaway!</h1>
       <p>Grab your ninja swags for half price!</p>
     </Modal>
-  </div>
+  </teleport>
+  <!-- 
+    teleport: enables rendering the containing elements inside a element 
+     which is outside of the vue app (#app)
+     v-show doesn't work when used with teleport
+  -->
 
-  <div v-show="showModalTwo">
+  <teleport to=".modals" v-if="showModalTwo">
     <Modal @close="toggleModalTwo">
       <p>second modal</p>
     </Modal>
-  </div>
+  </teleport>
 
   <p>Welcome...</p>
   <button @click.alt="toggleModal">open modal (alt)</button>
@@ -50,7 +55,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
