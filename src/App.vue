@@ -9,21 +9,17 @@
       <h1>Ninja Giveaway!</h1>
       <p>Grab your ninja swags for half price!</p>
     </Modal>
-    <!-- 
-      The attribute area in child componet tags is
-       a inlet and outlet of data that links the parent and child component
-
-      outlet: props (receives in props object in child component)
-      inlet: custom events (sent from $emit in child)
-
-      (Seems to be very cetral structure, which data/actions handled in parent... (which is good))
-    -->
   </div>
+
+  <div v-show="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <p>second modal</p>
+    </Modal>
+  </div>
+
   <p>Welcome...</p>
   <button @click.alt="toggleModal">open modal (alt)</button>
-  <!-- 
-    @event.something → event modifier (can configure more detailed cases of events)
-   -->
+  <button @click.shift="toggleModalTwo">open modal two (shift)</button>
 </template>
 
 <script>
@@ -36,16 +32,18 @@ export default {
   data(){
     return {
       title: 'My First Vue App :)',
-      header: 'Sign up for the Giveaway!',
-      text: 'Grab your ninja swags for half price!',
       theme: 'sale',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
 
   methods: {
     toggleModal(){
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo(){
+      this.showModalTwo = !this.showModalTwo;
     }
   }
 }
