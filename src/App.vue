@@ -12,8 +12,10 @@
   </teleport>
   <!-- 
     teleport: enables rendering the containing elements inside a element 
-     which is outside of the vue app (#app)
-     v-show doesn't work when used with teleport
+      which is outside of the vue app (#app)
+
+    v-show is not made to work with multiple elements (such as when using <template> to nest them)
+      also, using teleport with v-show will not work
   -->
 
   <teleport to=".modals" v-if="showModalTwo">
