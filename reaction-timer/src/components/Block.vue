@@ -1,12 +1,39 @@
 <template>
-    <div class="block">
+    <div class="block" v-if="showBlock">
         click me
     </div>
 </template>
 
 <script>
     export default {
-        props: ['delay']
+        props: ['delay'],
+
+        data(){
+            return {
+                showBlock: false
+            }
+        },
+
+        mounted(){
+            setTimeout(() => {
+                this.showBlock = true
+                console.log(this.delay)
+            }, this.delay);
+            console.log('component mounted')
+        },
+        updated(){
+            console.log('component updated')
+        },
+        unmounted(){
+            console.log('unmounted')
+        }
+        /* 
+            lifecycle hooks → function triggers which each corresponds to
+             the "components'" different lifecycle stage
+             Kind of like eventListeners
+
+            unmounted: fires when component once was rendered to the DOM is unmounted
+        */
     }
 </script>
 
