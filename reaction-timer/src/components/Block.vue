@@ -35,8 +35,7 @@
             setTimeout(() => {
                 this.showBlock = true
                 this.startTimer()
-            }, this.delay);
-            console.log('component mounted')
+            }, this.delay)
         }
         /* 
             lifecycle hooks → function triggers which each corresponds to
