@@ -23,7 +23,11 @@
             },
             stopTimer(){
                 clearInterval(this.timer)
-                console.log(this.reactionTime)
+                this.$emit('end', this.reactionTime)
+                /*
+                    Data can be sent from child component to parent 
+                     by setting it on the second parameter of custom events
+                */
             }
         },
 
