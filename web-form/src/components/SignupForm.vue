@@ -15,9 +15,11 @@
         <label>Skills:</label>
         <input type="text" v-model="tempSkill" @keyup.alt="addSkill" />
 
-        <div v-for="skill in skills" :key="skill" class="pill" @click="deleteSkill">
-            {{ skill }}
+        <div v-for="skill in skills" :key="skill" class="pill">
+            <span @click="deleteSkill(skill)">{{ skill }}</span>
         </div>
+        <!-- in vue, you can make use of each iterated items (in this case, "skill"),
+               while still appreciating their reactivity -->
 
         <div class="terms">
             <input type="checkbox" v-model="terms" required />
@@ -53,13 +55,12 @@
                 } 
             },
 
-            deleteSkill(e){
-                if (this.skills.includes(e.target.textContent)){
-                    this.skills = this.skills.filter((skill) =>{
-                        return skill !== e.target.textContent
+            deleteSkill(skill){
+                this.skills = this.skills.filter((item) =>{
+                        return skill !== item
                     })
-                }
             }
+            // individual "skill" (which was clicked on) gets thrown in as argument
         }
     }
 </script>
