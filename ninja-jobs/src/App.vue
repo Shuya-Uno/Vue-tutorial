@@ -1,8 +1,15 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'Home' }">Home</router-link> |
+    <router-link :to="{ name: 'About' }">About</router-link>
   </nav>
+  <!-- 
+    router-link benefits
+      1. fast load (no network request)
+      2. automatic "active" state on clicked links (vue classes are automatically assigned)
+      3. paths being assigned to "to" can be data-binded (centralized management of paths, no hard-coding)
+  -->
+
   <router-view/>
 </template>
 
@@ -22,9 +29,13 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fff;
+  background-color: crimson;
 }
 </style>
