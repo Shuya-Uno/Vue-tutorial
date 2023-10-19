@@ -11,8 +11,32 @@
       3. paths being assigned to "to" can be data-binded (centralized management of paths, no hard-coding)
   -->
 
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Go Back</button>
+  <button @click="forward">Go Forward</button>
   <router-view/>
 </template>
+
+<script>
+  export default {
+    methods: {
+      redirect(){
+        this.$router.push({ name: 'Home' })
+      },
+      back(){
+        this.$router.go(-1)
+      },
+      forward(){
+        this.$router.go(1)
+      }
+    }
+  }
+
+  /*
+    $route → the current route (path)
+    $router → used to control the web history
+  */
+</script>
 
 <style>
 #app {
@@ -38,5 +62,12 @@ nav a {
 nav a.router-link-exact-active {
   color: #fff;
   background-color: crimson;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>
